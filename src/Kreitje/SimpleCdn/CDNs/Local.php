@@ -16,6 +16,12 @@ class Local implements CDNInterface {
 	private $cdn_url 			= '';
 
 	/**
+	 *  Set the file mode a directory should be created with
+	 */
+	private $mode = 0777;
+
+
+	/**
 	 * The last saved object URL 
 	 */
 	public $last_url = null;
@@ -51,11 +57,12 @@ class Local implements CDNInterface {
 			/**
 			 * Make the directories if they don't exist
 			 */
-			if (!File::isDirectory( $this->upload_directory . '/' . $my_path ) )
-				File::makeDirectory( $this->upload_directory . '/' . $my_path, 0777, true);
+			if ( !is_dir( $this->upload_directory . '/' . $my_path ) ) {
+				mkdir( $this->upload_directory . '/' . $my_path, $this->mode, true );
+			}
 		}
 
-		$ret = File::copy( $file, $this->upload_dir . '/' . $path );
+		$ret = copy( $file, $this->upload_dir . '/' . $path );
 
 		if ($ret === true) {
 			$this->last_url = $this->url . '/'. $path;
