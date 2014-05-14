@@ -20,7 +20,6 @@ class Local implements CDNInterface {
 	 */
 	private $mode = 0777;
 
-
 	/**
 	 * The last saved object URL 
 	 */
@@ -69,7 +68,7 @@ class Local implements CDNInterface {
 			return true;
 		}
 
-		throw new CDNException( 'Unable to save file to the CDN' );
+		throw new CDNException( 'Unable to save file to the CDN.' );
 
 	}
 
@@ -79,9 +78,12 @@ class Local implements CDNInterface {
 	 * @return bool
 	 */
 	public function delete( $path ) {
-		File::delete( $this->upload_dir . '/' . $path );
+		
+		if ( @unlink( $this->upload_dir . '/' . $path ) ) {
+			return true;	
+		}
 
-		return true;
+		throw new CDNException( 'Unable to remove CND file.' );
 	}
 
 	/**
