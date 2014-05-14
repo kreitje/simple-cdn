@@ -16,5 +16,9 @@
             "Kreitje\\SimpleCdn": "src/"
         }
     },
+    "suggest": {
+        "aws/aws-sdk-php": "If you are going to use Amazon S3 add in the AWS SDK"
+        "netdna/rws-sdk-php": "If you are going to use MaxCDN/NetDNA install this package."
+    },
     "minimum-stability": "stable"
 }
