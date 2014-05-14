@@ -1,0 +1,20 @@
+{
+    "name": "kreitje/simple-cdn",
+    "description": "",
+    "authors": [
+        {
+            "name": "Jeff Kreitner",
+            "email": "none@hidden.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "illuminate/support": "4.1.*"
+    },
+    "autoload": {
+        "psr-0": {
+            "Kreitje\\SimpleCdn": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}
